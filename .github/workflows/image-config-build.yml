@@ -25,7 +25,7 @@ jobs:
       image: ghcr.io/prb17/image-builder:latest
       credentials:
         username: ${{ github.actor }}
-        password: ${{ secrets.PACKAGE_UPLOAD_TOKEN }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - name: Build the generated Dockerfile
       run: "echo do build"
