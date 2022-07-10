@@ -52,6 +52,7 @@ jobs:
 
     - name: Build and deploy the generated Dockerfile
       run: |
+        echo "LABEL org.opencontainers.image.source https://github.com/${{ env.REPO_OWNER }}/${{ env.REPO_NAME }}" >> Dockerfile
         export DOCKER_BUILD_CONTEXT=`pwd` 
         export DOCKER_BUILD_IMAGE_NAME=${{ env.IMAGE_NAME }} 
         export DOCKER_BUILD_TAG=${{ env.IMAGE_TAG }}
