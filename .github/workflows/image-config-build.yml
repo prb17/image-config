@@ -5,6 +5,11 @@ on:
     branches-ignore:
       - 'main'
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_TAG: latest
+
 jobs:
   configure:
     runs-on: ubuntu-latest
@@ -14,8 +19,13 @@ jobs:
       run: python3 configure.py && cat Dockerfile
 
   build:
-    runs-on: ghcr.io/prb17/image-builder:latest
+    runs-on: ubuntu-latest
     needs: configure
+    container:
+      image: ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.PACKAGE_UPLOAD_TOKEN }}
     steps:
     - name: Build the generated Dockerfile
       run: "echo do build"
