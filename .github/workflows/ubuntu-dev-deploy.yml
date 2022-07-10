@@ -56,5 +56,5 @@ jobs:
         export DOCKER_BUILD_CONTEXT=`pwd` 
         export DOCKER_BUILD_IMAGE_NAME=${{ env.IMAGE_NAME }} 
         export DOCKER_BUILD_TAG=${{ env.IMAGE_TAG }}
-        export DOCKER_PUBLISH_REGISTRY=${{ env.REGISTRY }}
+        export DOCKER_PUBLISH_REGISTRY=${{ env.REGISTRY }}/${{ env.REPO_OWNER }}
         entrypoint.sh
