@@ -46,15 +46,15 @@ jobs:
     - name: Log in to the Container registry
       uses: docker/login-action@v2
       with:
-        registry: ${{ env.REGISTRY }}/${{ env.REPO_OWNER }}/${{ env.REPO_NAME }}
+        registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
         password: ${{ secrets.PACKAGE_UPLOAD_TOKEN }}
 
     - name: Build and deploy the generated Dockerfile
       run: |
-        echo "LABEL org.opencontainers.image.source https://github.com/${{ env.REPO_OWNER }}/${{ env.REPO_NAME }}" >> Dockerfile
+        echo "LABEL org.opencontainers.image.source https://github.com/${{ env.REPO_NAME }}" >> Dockerfile
         export DOCKER_BUILD_CONTEXT=`pwd` 
         export DOCKER_BUILD_IMAGE_NAME=${{ env.IMAGE_NAME }} 
         export DOCKER_BUILD_TAG=${{ env.IMAGE_TAG }}
-        export DOCKER_PUBLISH_REGISTRY=${{ env.REGISTRY }}/${{ env.REPO_OWNER }}/${{ env.REPO_NAME }}
+        export DOCKER_PUBLISH_REGISTRY=${{ env.REGISTRY }}
         entrypoint.sh
