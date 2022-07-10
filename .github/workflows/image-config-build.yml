@@ -1,0 +1,21 @@
+name: Image Builder Build CI
+
+on:
+  push:
+    branches-ignore:
+      - 'main'
+
+jobs:
+  configure:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Configure the Dockerfile
+      run: python3 configure.py && cat Dockerfile
+
+  build:
+    runs-on: ghcr.io/prb17/image-builder
+    needs: configure
+    - name: Build the generated Dockerfile
+      run: "echo do build"
+
