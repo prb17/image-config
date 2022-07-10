@@ -1,0 +1,47 @@
+name: ubuntue-dev build
+
+on:
+  push:
+    branches-ignore:
+      - 'main'
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_TAG: latest
+
+jobs:
+  configure:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Configure the Dockerfile
+      run: python3 configure.py && cat Dockerfile
+
+    - name: Upload Dockerfile context 
+      uses: actions/upload-artifact@v3
+      with:
+        name: docker_context
+        path: .
+
+  build:
+    runs-on: ubuntu-latest
+    needs: configure
+    container:
+      image: ghcr.io/prb17/image-builder:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.PACKAGE_UPLOAD_TOKEN }}
+
+    steps:
+    - name: Download Dockerfile context result for 'configure'
+      uses: actions/download-artifact@v3
+      with:
+        name: docker_context
+
+    - name: Build the generated Dockerfile
+      run: |
+        export DOCKER_BUILD_CONTEXT=`pwd` 
+        export DOCKER_BUILD_IMAGE_NAME=${{ env.IMAGE_NAME }} 
+        export DOCKER_BUILD_TAG=${{ env.IMAGE_TAG }} 
+        entrypoint.sh
