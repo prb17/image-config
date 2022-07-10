@@ -8,8 +8,10 @@ on:
       - 'main'
 
 env:
-  REGISTRY: ghcr.io/prb17
-  IMAGE_NAME: ${{ github.repository }}
+  REGISTRY: ghcr.io
+  REPO_OWNER: prb17
+  REPO_NAME: ${{ github.repository }}
+  IMAGE_NAME: ubuntu-dev
   IMAGE_TAG: latest
 
 jobs:
@@ -44,7 +46,7 @@ jobs:
     - name: Log in to the Container registry
       uses: docker/login-action@v2
       with:
-        registry: ${{ env.REGISTRY }}
+        registry: ${{ env.REGISTRY }}/${{ env.REPO_OWNER }}/${{ env.REPO_NAME }}
         username: ${{ github.actor }}
         password: ${{ secrets.PACKAGE_UPLOAD_TOKEN }}
 
