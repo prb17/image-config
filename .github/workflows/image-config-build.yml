@@ -28,5 +28,5 @@ jobs:
         password: ${{ secrets.PACKAGE_UPLOAD_TOKEN }}
     steps:
     - name: Build the generated Dockerfile
-      run: "echo do build"
+      run: "export DOCKER_BUILD_CONTEXT=`pwd` && export DOCKER_BUILD_TAG=latest && export DOCKER_PUBLISH_REGISTRY=my-reg && entrypoint.sh"
 
