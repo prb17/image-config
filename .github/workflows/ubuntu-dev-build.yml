@@ -1,4 +1,4 @@
-name: ubuntue-dev build
+name: ubuntu-dev build
 
 on:
   push:

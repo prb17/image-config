@@ -1,4 +1,4 @@
-name: ubuntue-dev deploy
+name: ubuntu-dev deploy
 
 on:
   push:
