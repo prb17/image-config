@@ -15,8 +15,9 @@ jobs:
   configure:
     runs-on: ubuntu-latest
     steps:
-    - name: Configure the Dockerfile
+    - name: Install Python dependencies
       uses: py-actions/py-dependency-install@v4
+    - name: Configure the Dockerfile
       uses: actions/checkout@v3
       run: ./configure.py --config-image ${{ env.IMAGE_NAME }} --log-level debug
 
