@@ -3,7 +3,7 @@ name: ubuntu-dev build
 on:
   push:
     branches-ignore:
-      - 'main'
+      - '*'
 
 env:
   REGISTRY: ghcr.io
