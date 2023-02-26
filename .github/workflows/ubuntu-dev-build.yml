@@ -2,7 +2,7 @@ name: ubuntu-dev build
 on:
   push:
     branches-ignore:
-      - '*'
+      - 'main'
   workflow_call:    
 
 env:

@@ -1,11 +1,11 @@
 name: ubuntu-dev deploy
 
-on: push
-  # push:
-  #   tags:
-  #     - '*'
-    # branches:
-    #   - 'main'
+on:
+  push:
+    tags:
+      - '*'
+    branches:
+      - 'main'
 
 env:
   REGISTRY: ghcr.io
@@ -19,8 +19,6 @@ jobs:
     uses: ./.github/workflows/ubuntu-dev-config.yml
   deploy:
     runs-on: ubuntu-latest
-    # permissions:
-    #   packages: write
     needs: [configure]
     container:
       image: ghcr.io/prb17/image-builder:latest
