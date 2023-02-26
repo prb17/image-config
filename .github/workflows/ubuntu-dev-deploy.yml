@@ -3,7 +3,7 @@ name: ubuntu-dev deploy
 on: 
   workflow_run:
     workflows: ["ubuntu-dev build"]
-    branches: ['*']
+    branches: ['add-build-packages-for-running-tests']
     types:
       - completed
   # push:
