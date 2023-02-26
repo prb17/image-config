@@ -1,9 +1,9 @@
 name: ubuntu-dev build
-
 on:
   push:
     branches-ignore:
       - '*'
+  workflow_call:    
 
 env:
   REGISTRY: ghcr.io
