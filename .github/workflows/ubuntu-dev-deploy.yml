@@ -1,11 +1,11 @@
 name: ubuntu-dev deploy
 
-on: 
-  workflow_run:
-    workflows: ["ubuntu-dev build"]
-    branches: ['*']
-    types:
-      - completed
+on: push
+  # workflow_run:
+  #   workflows: ["ubuntu-dev build"]
+  #   branches: ['*']
+  #   types:
+  #     - completed
   # push:
   #   tags:
   #     - '*'
