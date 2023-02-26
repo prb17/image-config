@@ -1,11 +1,6 @@
 name: ubuntu-dev deploy
 
 on: push
-  # workflow_run:
-  #   workflows: ["ubuntu-dev build"]
-  #   branches: ['add-build-packages-for-running-tests']
-  #   types:
-  #     - completed
   # push:
   #   tags:
   #     - '*'
@@ -47,9 +42,9 @@ jobs:
         
     - name: Deploy Image
       run: |
-        echo "LABEL org.opencontainers.image.source https://github.com/${{ env.REPO_NAME }}" >> Dockerfile
+        echo "LABEL org.opencontainers.image.source=https://github.com/${{ env.REPO_NAME }}" >> Dockerfile
         export DOCKER_BUILD_CONTEXT=`pwd` 
         export DOCKER_BUILD_IMAGE_NAME=${{ env.IMAGE_NAME }} 
         export DOCKER_BUILD_TAG=${{ env.IMAGE_TAG }}
-        export DOCKER_PUBLISH_REGISTRY=${{ env.REGISTRY }}/${{ env.REPO_OWNER }}/
+        export DOCKER_PUBLISH_REGISTRY=${{ env.REGISTRY }}/${{ env.REPO_OWNER }}
         entrypoint.sh
