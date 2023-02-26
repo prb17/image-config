@@ -15,11 +15,11 @@ jobs:
   configure:
     runs-on: ubuntu-latest
     steps:
+    - name: Install Python Dependencies
+    - uses: py-actions/py-dependency-install@v4
     - uses: actions/checkout@v3
     - name: Configure the Dockerfile
-      run: |
-        apt-get upgrade -y python3-jinja2
-        ./configure.py --config-image ${{ env.IMAGE_NAME }} --log-level debug
+      run: ./configure.py --config-image ${{ env.IMAGE_NAME }} --log-level debug
 
     - name: Upload Dockerfile context 
       uses: actions/upload-artifact@v3
