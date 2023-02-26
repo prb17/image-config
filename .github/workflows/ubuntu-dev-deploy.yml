@@ -19,6 +19,8 @@ jobs:
     uses: ./.github/workflows/ubuntu-dev-config.yml
   deploy:
     runs-on: ubuntu-latest
+    # permissions:
+    #   packages: write
     needs: [configure]
     container:
       image: ghcr.io/prb17/image-builder:latest
@@ -44,7 +46,7 @@ jobs:
       run: |
         echo "LABEL org.opencontainers.image.source=https://github.com/${{ env.REPO_NAME }}" >> Dockerfile
         export DOCKER_BUILD_CONTEXT=`pwd` 
-        export DOCKER_BUILD_IMAGE_NAME=${{ env.IMAGE_NAME }} 
+        export DOCKER_BUILD_IMAGE_NAME=${{ env.IMAGE_NAME }}
         export DOCKER_BUILD_TAG=${{ env.IMAGE_TAG }}
         export DOCKER_PUBLISH_REGISTRY=${{ env.REGISTRY }}/${{ env.REPO_OWNER }}
         entrypoint.sh
