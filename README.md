@@ -33,10 +33,8 @@ Repo designed to configure Dockerfiles based on specific needs
 ```
 This will configure an ubuntu-dev Dockerfile and save it to the ./tmp directory
 
-## Sometimes this will fail if the package upload token expires in github
-#### Steps to recreate
-
-- Go to profile > settings > developer settings
-- Add new token
-- Update `image-builder` and `image-config` to use new token
-- Use new token to login via local shell
+#### NOTES to self
+- If workflow errors out with docker pull or login
+    - Make sure that `image-config` has a read Role in the `image-builder` package
+    - Make sure to use the github_token secret and not a personal access token
+    - Also for the `image-builder` repo workflow to deploy the built image to the `image-config` package registry, it needs to have write access to `image-config` registry

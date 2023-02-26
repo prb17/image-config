@@ -1,11 +1,11 @@
 name: ubuntu-dev deploy
 
-on:
-  push:
-    tags:
-      - '*'
-    branches:
-      - 'main'
+on: push
+  # push:
+  #   tags:
+  #     - '*'
+  #   # branches:
+  #   #   - 'main'
 
 env:
   REGISTRY: ghcr.io
