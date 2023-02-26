@@ -46,7 +46,7 @@ jobs:
       image: ghcr.io/prb17/image-builder
       credentials:
         username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ secrets.PACKAGE_UPLOAD_TOKEN }}
 
     steps:
     #- name: Log into GitHub Container Registry

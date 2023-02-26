@@ -32,3 +32,11 @@ Repo designed to configure Dockerfiles based on specific needs
 ./configure.py --config-image ubuntu-dev --output_dir ./tmp/ --log-level debug
 ```
 This will configure an ubuntu-dev Dockerfile and save it to the ./tmp directory
+
+## Sometimes this will fail if the package upload token expires in github
+#### Steps to recreate
+
+- Go to profile > settings > developer settings
+- Add new token
+- Update `image-builder` and `image-config` to use new token
+- Use new token to login via local shell
