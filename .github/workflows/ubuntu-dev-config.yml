@@ -1,0 +1,25 @@
+name: ubuntu-dev build
+on:
+  workflow_call:    
+
+env:
+  IMAGE_NAME: ubuntu-dev
+
+jobs:
+  configure:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout my code
+      uses: actions/checkout@v3
+    
+    - name: Install Python dependencies
+      uses: py-actions/py-dependency-install@v4
+    
+    - name: Configure the Dockerfile
+      run: ./configure.py --config-image ${{ env.IMAGE_NAME }} --log-level debug
+    
+    - name: Upload Dockerfile context 
+      uses: actions/upload-artifact@v3
+      with:
+        name: docker_context
+        path: .
