@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-
 from jinja2 import Environment, PackageLoader, select_autoescape
 import yaml
 import argparse
@@ -28,7 +27,7 @@ def main():
 
     logging.info("setting up jinja environment")
     env = Environment (
-        loader=PackageLoader("__main__"),
+        loader=PackageLoader("configure"),
         autoescape=select_autoescape()
     )
     
