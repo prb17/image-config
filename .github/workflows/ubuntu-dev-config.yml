@@ -1,4 +1,4 @@
-name: ubuntu-dev build
+name: ubuntu-dev config
 on:
   workflow_call:    
 
