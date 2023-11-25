@@ -1,0 +1,18 @@
+<% if @broadcastclient == true -%>
+    broadcastclient <%= @value1 %>
+<% endif -%>
+
+<% required value="a.complicated_function()" %>
+    A has a complicated value : <%= value %>
+<% endrequired %>
+
+
+<% cache 'sidebar', 300 %>
+<div class="sidebar">
+</div>
+<% endcache %>
+
+#<% @someDict.each do |val| -%>
+#    Some stuff with <%= val %>
+#<% end -%>
+#Just format that line to move do to front and replace it with for

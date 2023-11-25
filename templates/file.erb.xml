@@ -1,0 +1,27 @@
+<% if @broadcastclient == true -%>
+    broadcastclient <%= @value1 %>
+<% end -%>
+
+<% for item in someList %>
+    value: <%= item -%>
+<% endfor %>
+
+<% for key,val in @someDict.items() %>
+    key: <%= key %>
+    val: <%= val %>
+<% endfor %>
+
+<% if @top['level1']['level2']['level3']['val'] == true -%>
+    multi index works!!
+    <%= pdict.dig() %>
+<% end -%>
+
+<% for key,val in @pdict.each %>
+    key: <%= key %>
+    val: <%= val %>
+<% endfor %>
+
+<% each @pdict.each is defined %>
+    key: <%= @value1 %>
+    val: <%= @value1 %>
+<% end %>

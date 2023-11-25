@@ -1,0 +1,13 @@
+broadcastclient: false
+value1: "someValue"
+someList:
+  - "one"
+  - "two"
+someDict:
+  one: "one"
+  two: "two"
+top:
+  level1:
+    level2:
+      level3:
+        val: true

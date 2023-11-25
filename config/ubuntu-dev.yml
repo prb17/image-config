@@ -1,3 +1,0 @@
-base_image: ubuntu
-base_image_tag: 22.04
-install_packages: "default-jre python3 pip build-essential cmake gdb valgrind git wget"
