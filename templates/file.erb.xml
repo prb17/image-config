@@ -13,15 +13,23 @@
 
 <% if @top['level1']['level2']['level3']['val'] == true -%>
     multi index works!!
-    <%= pdict.dig() %>
 <% end -%>
 
-<% for key,val in @pdict.each %>
+<% for key,val in @someDict|each %>
+    normal for loop loop
     key: <%= key %>
     val: <%= val %>
 <% endfor %>
 
-<% each @pdict.each is defined %>
+<% @someDict|each do |val| -%>
     key: <%= @value1 %>
     val: <%= @value1 %>
 <% end %>
+
+<% if @restrict is defined -%>
+# Permit time synchronization with our time source, but do not
+# permit the source to query or modify the service on this system.
+<% @restrict|each do |restrict| -%>
+restrict <%= restrict %>
+<% end -%>
+<% end -%>

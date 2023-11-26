@@ -16,3 +16,11 @@
 #    Some stuff with <%= val %>
 #<% end -%>
 #Just format that line to move do to front and replace it with for
+
+    # regex = r'^.*(\d+\.\d+)% "\|(.*)\|$'
+    regex = r'^.*(\d+\.\d+)% (do*)$'
+    matches = re.findall(regex, template_str)
+    # matches = re.findall("\|val\|", template_str)
+    logging.info(f"Findall: {matches}")
+    # for matches in re.findall("\|+?\|", template_str):
+    #     logging.info(f"Matches: {matches}")

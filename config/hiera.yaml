@@ -11,3 +11,5 @@ top:
     level2:
       level3:
         val: true
+restrict:
+  - "first"
